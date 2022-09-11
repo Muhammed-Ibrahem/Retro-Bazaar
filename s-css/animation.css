@@ -1,0 +1,97 @@
+/*DRAW LINKS BORDER*/
+@keyframes drawBorders {
+  0% {
+    height: 0px;
+  }
+  33.3% {
+    height: 100%;
+    width: 0%;
+  }
+  100% {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.sukaar {
+  opacity: 0;
+}
+/* SLIDERS */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* FADERS */
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+/* HEADS ANIMATION */
+@keyframes snaps {
+  0% {
+    rotate: -2deg;
+  }
+  100% {
+    rotate: 0;
+  }
+}
+
+/* BTNS ANIMATIONS */
+@keyframes bounceBtn {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 0%;
+  }
+  70% {
+    left: -5%;
+  }
+  80% {
+    left: -0%;
+  }
+  90% {
+    left: -2%;
+  }
+  100% {
+    left: 0%;
+  }
+}

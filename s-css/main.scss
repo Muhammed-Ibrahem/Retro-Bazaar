@@ -1,0 +1,681 @@
+@use './variables/variables' as *;
+@use './resets/resets';
+@use './components/components';
+
+// HERO SECTION
+.hero-section {
+  position: relative;
+  background-color: $secColor;
+  & header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .logo {
+      color: $mainColor;
+    }
+    & .icon {
+      font-size: 1.5rem;
+      color: $mainColor;
+    }
+    @media (min-width: 466px) {
+      & {
+        display: none;
+      }
+    }
+  }
+  padding: 0.5em;
+  & .mainNav {
+    @media (max-width: 465px) {
+      & {
+        height: 0;
+        &.hidden {
+          height: 144px;
+        }
+      }
+    }
+    transition: height 0.5s ease-in-out;
+    overflow: hidden;
+    & .links {
+      position: relative;
+      z-index: 100;
+      max-width: 1200px;
+      padding: 1rem 0;
+      @media (min-width: 465px) {
+        & {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+      }
+      //   background-color: $secColor;
+      display: flex;
+      gap: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: $mainColor;
+      @media (min-width: 466px) {
+        flex-direction: row;
+      }
+      & .link {
+        position: relative;
+        text-transform: uppercase;
+        font-weight: bold;
+        @media (max-width: 465px) {
+          & {
+            width: 100%;
+            &::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: -5px;
+              width: 100%;
+              height: 2px;
+              background: linear-gradient(90deg, $mainColor, $secColor);
+            }
+          }
+        }
+        & a {
+          color: inherit;
+          font-size: 1rem;
+          font-weight: 500;
+          position: relative;
+          transition: background-color 0.5s 0.5s, color 0.5s 0.5s;
+          @media (min-width: 466px) {
+            & {
+              padding: 0.5rem 1rem;
+            }
+            &::before {
+              content: '';
+              width: 0%;
+              height: 0%;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              border-width: 1px;
+              border-style: solid;
+              border-color: $mainColor transparent transparent $mainColor;
+            }
+            &::after {
+              content: '';
+              width: 0px;
+              height: 0px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              border-width: 1px;
+              border-style: solid;
+              border-color: transparent $mainColor $mainColor transparent;
+            }
+            &:hover {
+              color: $secColor;
+              background-color: $mainColor;
+              &::before,
+              &::after {
+                animation: drawBorders 0.5s linear forwards;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //BACKGROUND
+  & .background {
+    display: grid;
+    min-height: 60vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    column-gap: 5rem;
+    @media (min-width: 1200px) {
+      & {
+        grid-template-columns: 1fr 0.5fr 1fr;
+        gap: 2rem;
+      }
+    }
+    @media (min-height: 1500px) {
+      & {
+        min-height: 50vh;
+      }
+    }
+    @media (min-height: 1700px) {
+      & {
+        min-height: 45vh;
+      }
+    }
+    @media (min-height: 2000px) {
+      & {
+        min-height: 40vh;
+      }
+    }
+    & .bigHead {
+      transform-origin: bottom left;
+      transform: rotate(-2deg);
+    }
+    & .textContent {
+      @media (min-width: 768px) and (max-width: 1199px) {
+        & {
+          grid-column: 1 / 3;
+        }
+      }
+    }
+    & .right {
+      @media (min-width: 768px) and (max-width: 1199px) {
+        & {
+          grid-column: 1 / 2;
+          grid-row: 2;
+        }
+      }
+      @media (min-width: 1200px) {
+        & {
+          align-self: start;
+          justify-self: start;
+        }
+      }
+    }
+    & .left {
+      @media (max-width: 767px) {
+        & {
+          display: none;
+        }
+      }
+      @media (min-width: 768px) and (max-width: 1199px) {
+        & {
+          display: block;
+          grid-column: 2;
+          grid-row: 2;
+        }
+      }
+      @media (min-width: 1200px) {
+        & {
+          align-self: end;
+          justify-self: end;
+        }
+      }
+    }
+  }
+
+  // SHAPES
+  & .top-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40%;
+    & .img {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  & .bottom-right {
+    position: absolute;
+    width: 40%;
+    right: 0;
+    bottom: -2px;
+    & img {
+      transform: rotate(180deg);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  & .light-bolt {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-100%);
+  }
+  @media (max-width: 464px) {
+    & .top-left,
+    & .bottom-right {
+      display: none;
+    }
+  }
+}
+
+// HERO SECTION
+
+// ABOUT US
+.about-us {
+  background-color: $mainColor;
+  position: relative;
+  padding-top: $spTop;
+  padding-bottom: $spBottom;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  text-align: center;
+  & .bigHead {
+    font-size: 2rem;
+  }
+  & h2 {
+    text-transform: capitalize;
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    @media (min-width: 768px) {
+      & {
+        font-size: 5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      & {
+        font-size: 7rem;
+      }
+    }
+  }
+
+  & .left-top {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 40%;
+    & img {
+      transform: rotate(180deg);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  & .bottom-right {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    width: 40%;
+    & img {
+      position: absolute;
+      right: 0;
+      bottom: -2px;
+    }
+  }
+  & .left-light-bolt {
+    position: absolute;
+    left: 0;
+    bottom: 10%;
+  }
+  & .right-light-bolt {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    transform: rotate(180deg);
+  }
+}
+// ABOUT US
+
+//WHAT's NEW
+.whatsNew {
+  background-color: $secColor;
+  padding-top: $spTop;
+  padding-bottom: $spBottom;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  & header {
+    & .bigHead {
+      text-align: center;
+      transform: rotate(-2deg);
+    }
+    & p {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  & .stalls {
+    margin-top: 2rem;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 1rem;
+    text-align: center;
+    & .stall {
+      & .bigHead {
+        font-size: 1.5rem;
+      }
+      & p {
+        margin-bottom: 1rem;
+        max-width: 350px;
+      }
+    }
+  }
+
+  & .left-light-bolt {
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+  }
+  & .right-light-bolt {
+    transform: rotateY(180deg);
+    position: absolute;
+    right: 0;
+    top: 30%;
+  }
+}
+// ABOUT US
+
+// FASHION
+.fashion {
+  padding-top: $spTop;
+  padding-bottom: $spBottom;
+  position: relative;
+  & .container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    & header {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      & .bigHead {
+        transform: rotate(-2deg);
+        @media (min-width: 592px) {
+          & {
+            font-size: 4rem;
+          }
+        }
+        @media (min-width: 768px) {
+          & {
+            font-size: 6rem;
+          }
+        }
+        @media (min-width: 900px) {
+          & {
+            font-size: 7rem;
+          }
+        }
+      }
+      & h4 {
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+      & .pComp {
+        max-width: 400px;
+      }
+    }
+  }
+
+  & .left-top {
+    top: -1px;
+    & img {
+      rotate: (180deg);
+    }
+  }
+  & .bottom-right {
+    bottom: -2px;
+  }
+}
+
+// STORES
+.our-store {
+  position: relative;
+  padding-top: $spTop;
+  padding-bottom: $spBottom;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  & header {
+    & .bigHead {
+      transform: rotate(-2deg);
+      margin-top: 3rem;
+      @media (min-width: 1200px) {
+        & {
+          margin-top: 5rem;
+        }
+      }
+    }
+    & h4 {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+  }
+  & .stores {
+    max-width: 1200px;
+    margin-top: 5rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    & .store {
+      text-align: center;
+      & .bigHead {
+        font-size: 1.5rem;
+      }
+      & p {
+        margin-bottom: 1rem;
+        max-width: 255px;
+      }
+    }
+  }
+
+  & .bottom-right {
+    bottom: -2px;
+    & img {
+      rotate: 180deg;
+    }
+  }
+}
+
+// HOW TO SHOP
+.how-to-shop {
+  padding: $spTop 0.5rem;
+  position: relative;
+  & header {
+    & .bigHead {
+      transform: rotate(-2deg);
+    }
+    & h4 {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+  }
+  & .content {
+    margin-top: 3rem;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    & .info {
+      padding: 0 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      & h3 {
+        text-transform: uppercase;
+      }
+      & p {
+        max-width: 280px;
+      }
+    }
+  }
+  & .left-top {
+    & img {
+      rotate: 180deg;
+    }
+  }
+}
+
+// BLOGS
+.blogs {
+  padding: $spTop 1rem;
+  position: relative;
+  & .container {
+    max-width: 1200px;
+    & header {
+      text-align: right;
+      & .left-light-bolt {
+        position: absolute;
+        left: 0;
+        top: 10%;
+      }
+    }
+    & .content {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      @media (min-width: 500px) {
+        & {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      & .blog {
+        & > * {
+          margin-bottom: 1rem;
+        }
+        & h3 {
+          text-transform: uppercase;
+        }
+        & p {
+          max-width: 400px;
+        }
+      }
+    }
+  }
+  & .bottom-right {
+    & img {
+      rotate: 180deg;
+    }
+  }
+}
+
+// NEWSLETTER
+.newsletter {
+  padding: $spTop 1rem;
+  text-align: center;
+  position: relative;
+  & header {
+    & h3 {
+      text-transform: uppercase;
+      font-size: clamp(0.9em, 1rem, 3em);
+    }
+    & .bigHead {
+      transform: rotate(-2deg);
+      margin-top: 4rem;
+      font-size: clamp(2.5rem, 7vw, 10rem);
+      @media (min-width: 1200px) {
+        & {
+          margin-top: 5rem;
+        }
+      }
+    }
+  }
+
+  & form {
+    margin-bottom: 3rem;
+    & input {
+      margin-bottom: 3rem;
+      width: 250px;
+      border: 1px solid $secColor;
+      outline: none;
+      height: 30px;
+      &::placeholder {
+        color: $secColor;
+        text-align: center;
+      }
+    }
+  }
+  & .left-top {
+    & img {
+      rotate: 180deg;
+    }
+  }
+}
+
+// FOOTER
+footer {
+  padding: $spTop 1rem 1rem;
+  position: relative;
+  & .multi-columns-footer {
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    gap: 3rem;
+    & h3 {
+      text-transform: uppercase;
+    }
+    & .bazaar,
+    & .legal,
+    & .footer-newsletter {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    & .bazaar,
+    & .legal {
+      & a {
+        text-transform: capitalize;
+      }
+    }
+    & .footer-newsletter {
+      & form {
+        & > * {
+          margin-bottom: 1rem;
+        }
+        & input {
+          height: 25px;
+          outline: none;
+          border: 1px solid $mainColor;
+          width: 250px;
+          &::placeholder {
+            color: $mainColor;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  & .cpy {
+    & h3 {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// DISABLE LIGHT BOLT IN SMALL SCREENS
+.goToHell {
+  display: block;
+  width: 8%;
+}
+
+.upAndDown {
+  animation: snaps 1s ease-in 0.5s both alternate infinite;
+}
+.toTopArrow {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  border: 1px solid $mainColor;
+  color: $mainColor;
+  padding: 0.5rem;
+  border-radius: 50%;
+  filter: invert(100%);
+  transition: opacity 0.5s;
+}
+.toTopFadeIn {
+  pointer-events: none;
+  opacity: 0;
+}
